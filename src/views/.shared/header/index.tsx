@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
 import {Link} from "react-router-dom";
-import {ContentContainer} from "../layout/Layout.Styled";
 
 const Header = () => {
     return(
@@ -20,6 +19,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px 60px;
+  box-shadow:  1px 1px 3px #ddd;
 `;
 const Logo = styled(Link)`
   display: inline-block;
