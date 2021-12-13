@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components'
+import WriteContainer from "../views/write/containers/WriteContainer";
 
 const Write = () => {
     return(
         <Container>
-            Write
+            <WriteContainer/>
         </Container>
     )
 };
