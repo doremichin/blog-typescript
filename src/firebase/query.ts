@@ -1,4 +1,4 @@
-import { collection, getDocs, doc, setDoc, serverTimestamp, query ,orderBy } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc, serverTimestamp, query ,orderBy,getDoc,deleteDoc } from "firebase/firestore";
 import { blogData } from "../interfaces/blog.interfaces";
 import { db } from "./firebase";
 
@@ -8,8 +8,8 @@ export interface data {
 }
 
 
-export const getCollection = async () => {
-    const q = query(collection(db, "blog"));
+export const getCollectionFB = async (collectionId : string) => {
+    const q = query(collection(db, collectionId),orderBy('createdAt' , 'desc'));
     const querySnapshot = await getDocs(q);
     const result : any[] = [];
     querySnapshot.forEach((doc) => {
@@ -24,7 +24,7 @@ export const getCollection = async () => {
 }
 
 
-export const setDocument = async (data : data) => {
+export const setDocumentFB = async (data : data) => {
     const newCityRef = doc(collection(db, "blog"));
 
     await setDoc(newCityRef, {
@@ -33,3 +33,24 @@ export const setDocument = async (data : data) => {
     });
 }
 
+export const getDocumentFB = async (collectionId : string , documentId : string) => {
+    const docRef = doc(db, collectionId, documentId);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+    } else {
+        console.log("No such document!");
+    }
+    return {
+        id : documentId,
+        ...docSnap.data(),
+    }
+
+}
+
+export const deleteDocumentFB = async (collectionId : string , documentId : string) => {
+
+    await deleteDoc(doc(db, collectionId, documentId));
+
+}

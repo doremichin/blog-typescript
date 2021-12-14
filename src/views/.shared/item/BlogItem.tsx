@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import {blogData} from "../../../interfaces/blog.interfaces";
+import {Link} from "react-router-dom";
 
 interface Props {
     data : blogData,
@@ -9,7 +10,7 @@ interface Props {
 
 const BlogItem = ({data, index} : Props) => {
     return(
-        <Container>
+        <Container to={`/detail/${data.id}`}>
             <Thumb>
 
             </Thumb>
@@ -25,8 +26,8 @@ const BlogItem = ({data, index} : Props) => {
     )
 };
 
-const Container = styled.div`
-
+const Container = styled(Link)`
+  display: block;
 `;
 const Thumb = styled.div`
   width: 100%;
