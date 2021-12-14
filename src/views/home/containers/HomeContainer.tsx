@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components'
-import {getCollection} from "../../../firebase/query";
+import {getCollectionFB} from "../../../firebase/query";
 import {useDispatch, useSelector} from "react-redux";
 import {setCollections} from "../../../redux/blog/slice";
 import MainList from "../../.shared/list/MainList";
@@ -15,7 +15,7 @@ const HomeContainer = () => {
     const list = useSelector((state : RootState) => state.blog.list)
 
     const getBlogs = async () => {
-       const result = await getCollection();
+       const result = await getCollectionFB('blog');
         dispatch(setCollections(result))
     }
 

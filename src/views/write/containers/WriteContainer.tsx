@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components'
 import WriteForm from "../components/WriteForm";
-import {data, setDocument} from "../../../firebase/query";
+import {data, setDocumentFB} from "../../../firebase/query";
 import {useHistory} from "react-router-dom";
 
 const WriteContainer = () => {
     const history = useHistory();
 
     const handleSubmit = async (data : data) => {
-        await setDocument(data)
+        await setDocumentFB(data)
         history.push('/')
     }
 

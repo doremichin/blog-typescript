@@ -1,5 +1,5 @@
 export interface blogData {
-    id : string
+    id? : string
     title? : string
     story? : string
     createdAt? : any
