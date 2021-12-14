@@ -1,10 +1,12 @@
-import { collection, getDocs, doc, setDoc, serverTimestamp, query ,orderBy,getDoc,deleteDoc } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc, serverTimestamp, query ,orderBy,getDoc,deleteDoc,updateDoc } from "firebase/firestore";
 import { blogData } from "../interfaces/blog.interfaces";
 import { db } from "./firebase";
 
-export interface data {
+export interface Idata {
     title : string
     story : string
+    createdAt? : any
+    updateAt? : any
 }
 
 
@@ -24,12 +26,13 @@ export const getCollectionFB = async (collectionId : string) => {
 }
 
 
-export const setDocumentFB = async (data : data) => {
+export const setDocumentFB = async (data : Idata) => {
     const newCityRef = doc(collection(db, "blog"));
 
     await setDoc(newCityRef, {
         ...data,
-        createdAt : serverTimestamp()
+        createdAt : serverTimestamp(),
+        updateAt : serverTimestamp()
     });
 }
 
@@ -53,4 +56,14 @@ export const deleteDocumentFB = async (collectionId : string , documentId : stri
 
     await deleteDoc(doc(db, collectionId, documentId));
 
+}
+
+export const updateDocumentFB = async (collectionId : string , documentId : string ,data : Idata) => {
+
+    const washingtonRef = doc(db, collectionId, documentId);
+
+    await updateDoc(washingtonRef, {
+        ...data,
+        updateAt : serverTimestamp()
+    });
 }
