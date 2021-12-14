@@ -2,17 +2,23 @@ import React from 'react';
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form';
 import {data} from "../../../firebase/query";
-import firebase from "firebase/compat";
+import {blogData} from "../../../interfaces/blog.interfaces";
+
 
 
 type FormData = {
     title: string;
     story: string;
 };
+type Props = {
+    data? : blogData
+    submitType : string
+    onSubmit : any
+}
 
 
-const WriteForm = ({ onSubmit } : any) => {
-
+const TextForm = ({ onSubmit, data, submitType } : Props) => {
+    console.log(data)
     const { register, setValue, handleSubmit, formState: { errors } } = useForm<FormData>();
     return(
         <Container>
@@ -20,17 +26,24 @@ const WriteForm = ({ onSubmit } : any) => {
                 <FormItem>
                     <Label>
                         <LabelName>제목</LabelName>
-                        <Input type={'text'}  {...register("title")} />
+                        <Input
+                            type={'text'}
+                            defaultValue={data?.title}
+                            {...register("title")}
+                        />
                     </Label>
                 </FormItem>
                 <FormItem>
                     <Label>
                         <LabelName>내용</LabelName>
-                        <Textarea {...register("story")} />
+                        <Textarea
+                            defaultValue={data?.story}
+                            {...register("story")}
+                        />
                     </Label>
                 </FormItem>
                 <ButtonSubmit>
-                    작성 완료
+                    {submitType}
                 </ButtonSubmit>
             </Form>
         </Container>
@@ -65,6 +78,7 @@ const Textarea = styled.textarea`
   padding: 10px;
   min-height: 300px;
   resize: vertical;
+  margin-bottom: 15px;
 `;
 const ButtonSubmit = styled.button`
   font-size: 14px;
@@ -74,4 +88,4 @@ const ButtonSubmit = styled.button`
   border: none;
   padding: 10px 20px;
 `;
-export default WriteForm;
+export default TextForm;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components'
 import {blogData} from "../../../interfaces/blog.interfaces";
+import {Link} from "react-router-dom";
 
 interface Props {
     data : blogData
@@ -19,7 +20,7 @@ const DetailForm : React.FC<Props> = ({ data,onClickDelete }) => {
                 </Story>
                 <ButtonBox>
                     <ButtonDelete onClick={onClickDelete}>삭제</ButtonDelete>
-                    <ButtonEdit>수정</ButtonEdit>
+                    <ButtonEdit to={`/edit/${data.id}`}>수정</ButtonEdit>
                 </ButtonBox>
             </Content>
         </Container>
@@ -53,8 +54,9 @@ const ButtonDelete = styled.div`
   ${Button};
   background-color: #ea3e3e;
 `;
-const ButtonEdit = styled.div`
+const ButtonEdit = styled(Link)`
   ${Button};
+  display: block;
   background-color: #18f;
   margin-left: 20px;
 
