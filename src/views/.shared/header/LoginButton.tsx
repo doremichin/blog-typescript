@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
-import {EmailLogout} from "../../../firebase/login";
+import { EmailLogout } from "../../../firebase/login";
 import { setUserInfo } from '../../../redux/auth/slice';
 
 const LoginButton = () => {
@@ -22,7 +22,8 @@ const LoginButton = () => {
 
 
 const NavItem = styled(Link)`
-  
+  margin: 0 10px;
+  padding: 10px;
 `;
 const LogoutButton = styled.div`
   display: inline-block;
