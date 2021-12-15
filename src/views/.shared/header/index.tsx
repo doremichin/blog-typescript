@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components'
 import {Link} from "react-router-dom";
+import { useSelector } from 'react-redux';
+import {RootState} from "../../../redux/store";
+import LoginButton from "./LoginButton";
 
 const Header = () => {
     return(
@@ -9,6 +12,7 @@ const Header = () => {
             <Nav>
                 <NavItem to={'/'}>Home</NavItem>
                 <NavItem to={'/write'}>Write</NavItem>
+                <LoginButton/>
             </Nav>
         </Container>
     )
