@@ -9,7 +9,7 @@ const Login = () => {
     const user = useSelector((state: RootState) => state.auth.user);
     const history = useHistory();
 
-    if(!user) history.push('/')
+    if(user) history.push('/')
 
     return(
         <Container>
