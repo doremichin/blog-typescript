@@ -12,7 +12,7 @@ const initialState: blogState = {
 }
 
 const blogSlice = createSlice({
-    name: 'counter',
+    name: 'blog',
     initialState,
     reducers: {
         setCollections: (state, {payload}) => {
