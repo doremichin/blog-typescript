@@ -11,15 +11,13 @@ export const EmailLogout = () => {
     });
 }
 
-export const EmailLogIn  = (email : string, password : string )  => {
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-        })
-        .catch((error) => {
-            console.log('login error!', error)
-            const errorCode = error.code;
-            const errorMessage = error.message;
-        });
+export const EmailLogIn  = async (email : string, password : string )  => {
+    try{
+        const userCredential = await signInWithEmailAndPassword(auth, email, password)
+        const user = userCredential.user;
+        return true
+    }catch(err){
+        console.log('login error' , err)
+        return false
+    }
 }

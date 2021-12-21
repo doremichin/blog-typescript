@@ -1,9 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {blogData} from "../../interfaces/blog.interfaces";
+import {IBlogData} from "../../interfaces/blog.interfaces";
 
 export interface blogState {
-    list: blogData[];
-    detail : blogData | object
+    list: IBlogData[];
+    detail : IBlogData | object
 }
 
 const initialState: blogState = {
@@ -27,3 +27,4 @@ const blogSlice = createSlice({
 export const { setCollections, setDocument } = blogSlice.actions
 
 export default blogSlice.reducer
+

@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components'
-import {blogData} from "../../../interfaces/blog.interfaces";
+import {IBlogData} from "../../../interfaces/blog.interfaces";
 import {Link} from "react-router-dom";
 
 interface Props {
-    data : blogData,
+    data : IBlogData,
     index : number
 }
 
@@ -12,7 +12,7 @@ const BlogItem = ({data, index} : Props) => {
     return(
         <Container to={`/detail/${data.id}`}>
             <Thumb>
-
+                <img src={data.thumbnailUrl} alt=""/>
             </Thumb>
             <Desc>
                 <Title>
@@ -30,9 +30,11 @@ const Container = styled(Link)`
   display: block;
 `;
 const Thumb = styled.div`
-  width: 100%;
-  height: 200px;
   background-color: #eee;
+  img{
+    width: 100%;
+    object-fit: cover;
+  }
 `;
 const Desc = styled.div`
   padding: 20px 10px;

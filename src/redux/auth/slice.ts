@@ -2,10 +2,12 @@ import {createSlice} from "@reduxjs/toolkit";
 
 export interface authState {
     user : object | null
+    authInitialized : boolean
 }
 
 const initialState: authState = {
     user : null,
+    authInitialized : false
 }
 
 const authSlice = createSlice({
@@ -14,10 +16,13 @@ const authSlice = createSlice({
     reducers: {
         setUserInfo: (state, {payload}) => {
             state.user = payload;
+        },
+        checkedAuth : (state) => {
+            state.authInitialized = !state.authInitialized
         }
     },
 })
 
-export const { setUserInfo } = authSlice.actions
+export const { setUserInfo ,checkedAuth} = authSlice.actions
 
 export default authSlice.reducer
