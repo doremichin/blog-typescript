@@ -1,4 +1,4 @@
-export interface blogData {
+export interface IBlogData {
     id? : string
     title? : string
     story? : string
@@ -6,4 +6,5 @@ export interface blogData {
     displayName? : string
     uid? : string
     updatedAt? : any
+    thumbnailUrl? : string
 }

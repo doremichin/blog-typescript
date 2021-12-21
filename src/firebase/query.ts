@@ -1,5 +1,5 @@
 import { collection, getDocs, doc, setDoc, serverTimestamp, query ,orderBy,getDoc,deleteDoc,updateDoc } from "firebase/firestore";
-import { blogData } from "../interfaces/blog.interfaces";
+import { IBlogData } from "../interfaces/blog.interfaces";
 import { db } from "./firebase";
 
 export interface Idata {
@@ -15,7 +15,7 @@ export const getCollectionFB = async (collectionId : string) => {
     const querySnapshot = await getDocs(q);
     const result : any[] = [];
     querySnapshot.forEach((doc) => {
-        const docItem : blogData = {
+        const docItem : IBlogData = {
             id: doc.id,
             ...doc.data()
         }

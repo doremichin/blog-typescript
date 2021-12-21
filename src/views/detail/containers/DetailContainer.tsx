@@ -9,7 +9,7 @@ import {RootState} from "../../../redux/store";
 
 
 const DetailContainer = () => {
-    const { id } : any  = useParams();
+    const { id } :{ id : string } = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
     const detail = useSelector((state: RootState) => state.blog.detail)

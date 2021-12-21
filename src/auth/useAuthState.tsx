@@ -2,7 +2,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { auth } from "../firebase/firebase";
 import {useDispatch} from "react-redux";
-import { setUserInfo } from "../redux/auth/slice";
+import {checkedAuth, setUserInfo } from "../redux/auth/slice";
 
 export const useAuthState = () => {
     const dispatch = useDispatch();
@@ -20,6 +20,7 @@ export const useAuthState = () => {
                 // ...
                 console.log('you can login now!')
             }
+            dispatch(checkedAuth())
         });
     }, []);
 }

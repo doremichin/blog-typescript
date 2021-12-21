@@ -1,14 +1,14 @@
 import React from 'react';
 import styled, { css } from 'styled-components'
-import {blogData} from "../../../interfaces/blog.interfaces";
+import {IBlogData} from "../../../interfaces/blog.interfaces";
 import {Link} from "react-router-dom";
 
 interface Props {
-    data : blogData
+    data : IBlogData
     onClickDelete : () => void
 }
 
-const DetailForm : React.FC<Props> = ({ data,onClickDelete }) => {
+const DetailForm = ({ data,onClickDelete } : Props) => {
     return(
         <Container>
             <Content>
@@ -18,6 +18,9 @@ const DetailForm : React.FC<Props> = ({ data,onClickDelete }) => {
                 <Story>
                     {data.story}
                 </Story>
+                <Image>
+                    <img src={data.thumbnailUrl} alt=""/>
+                </Image>
                 <ButtonBox>
                     <ButtonDelete onClick={onClickDelete}>삭제</ButtonDelete>
                     <ButtonEdit to={`/edit/${data.id}`}>수정</ButtonEdit>
@@ -40,6 +43,9 @@ const Title = styled.h2`
 const Story = styled.div`
   margin-bottom: 30px;
 `;
+const Image = styled.div`
+  
+`;
 const ButtonBox = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -59,6 +65,6 @@ const ButtonEdit = styled(Link)`
   display: block;
   background-color: #18f;
   margin-left: 20px;
-
 `;
+
 export default DetailForm;

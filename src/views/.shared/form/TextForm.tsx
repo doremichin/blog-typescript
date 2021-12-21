@@ -1,24 +1,32 @@
 import React from 'react';
 import styled from 'styled-components'
-import { useForm } from 'react-hook-form';
-import {blogData} from "../../../interfaces/blog.interfaces";
+import {set, useForm} from 'react-hook-form';
+import {IBlogData} from "../../../interfaces/blog.interfaces";
+import ImageUploader from "../ImageUploader";
+import {uploadToStorage} from "../../../firebase/storage";
 
 
 
 type FormData = {
     title: string;
     story: string;
+    thumbnailUrl : string | void;
 };
 type Props = {
-    data? : blogData
+    data? : IBlogData
     submitType : string
     onSubmit : any
 }
 
 
 const TextForm = ({ onSubmit, data, submitType } : Props) => {
-    console.log(data)
-    const { register, setValue, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const { register, setValue, handleSubmit, formState: { errors },watch } = useForm<FormData>();
+
+    const onChangeImage = async (file : any) => {
+        const url : string = await uploadToStorage(file)
+        setValue('thumbnailUrl', url)
+    }
+
     return(
         <Container>
             <Form onSubmit={handleSubmit(onSubmit)}>
@@ -41,6 +49,7 @@ const TextForm = ({ onSubmit, data, submitType } : Props) => {
                         />
                     </Label>
                 </FormItem>
+                <ImageUploader onChange={onChangeImage}/>
                 <ButtonSubmit>
                     {submitType}
                 </ButtonSubmit>

@@ -12,9 +12,9 @@ type LoginInfo = {
 const LoginContainer = () => {
     const history = useHistory();
 
-    const submitLogin = ({id, password} : LoginInfo) => {
-        EmailLogIn(id,password );
-        history.push('/')
+    const submitLogin = async ({id, password} : LoginInfo) => {
+        const result = await EmailLogIn(id,password );
+        if(result) history.push('/')
     }
 
     return(

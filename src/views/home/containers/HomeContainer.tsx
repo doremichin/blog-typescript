@@ -6,7 +6,7 @@ import {setCollections} from "../../../redux/blog/slice";
 import MainList from "../../.shared/list/MainList";
 import BlogItem from "../../.shared/item/BlogItem";
 import {RootState} from "../../../redux/store";
-import {blogData} from "../../../interfaces/blog.interfaces";
+import { IBlogData} from "../../../interfaces/blog.interfaces";
 
 
 
@@ -25,7 +25,7 @@ const HomeContainer = () => {
     return(
         <Container>
             <MainList data={list}>
-                {(data : blogData, index : number) => <BlogItem data={data} index={index}/>}
+                {(data : IBlogData, index : number) => <BlogItem data={data} index={index}/>}
             </MainList>
         </Container>
     )
