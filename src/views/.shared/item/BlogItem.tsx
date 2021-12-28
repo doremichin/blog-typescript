@@ -37,6 +37,7 @@ const BlogItem = ({data, index} : Props) => {
 
 const Container = styled.div`
     cursor: pointer;
+  box-shadow:  1px 1px 5px #eee;
 `;
 const Thumb = styled.div`
   background-color: #eee;
@@ -58,5 +59,10 @@ const Title = styled.div`
 const Story = styled.div`
   font-size: 14px;
   color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
 export default BlogItem;
