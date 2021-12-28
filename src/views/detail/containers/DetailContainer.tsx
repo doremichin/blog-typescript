@@ -25,7 +25,6 @@ const DetailContainer = () => {
     useEffect(() => {
         getDetailById();
     }, []);
-    console.log(detail)
 
     if(!detail) return null;
 

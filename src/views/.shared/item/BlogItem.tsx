@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import {IBlogData} from "../../../interfaces/blog.interfaces";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 interface Props {
     data : IBlogData,
@@ -9,10 +9,19 @@ interface Props {
 }
 
 const BlogItem = ({data, index} : Props) => {
+
+    const history = useHistory();
+    const onClick = () => {
+        history.push(`/detail/${data.id}`)
+    }
+
     return(
-        <Container to={`/detail/${data.id}`}>
+        <Container onClick={onClick}>
             <Thumb>
-                <img src={data.thumbnailUrl} alt=""/>
+                {
+                    data.thumbnailUrl
+                    && <img src={data.thumbnailUrl} alt=""/>
+                }
             </Thumb>
             <Desc>
                 <Title>
@@ -26,13 +35,15 @@ const BlogItem = ({data, index} : Props) => {
     )
 };
 
-const Container = styled(Link)`
-  display: block;
+const Container = styled.div`
+    cursor: pointer;
 `;
 const Thumb = styled.div`
   background-color: #eee;
+  min-height: 140px;
   img{
     width: 100%;
+    height: 140px;
     object-fit: cover;
   }
 `;

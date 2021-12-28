@@ -22,7 +22,7 @@ function ImageUploader ({onChange} : Props) {
     return(
         <Container>
             {localUrl && <img src={localUrl} alt=""/>}
-            <Input type={'file'} onChange={handleChange}/>
+            <Input type={'file'} onChange={handleChange} accept="image/*"/>
         </Container>
     )
 };

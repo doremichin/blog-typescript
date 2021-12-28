@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components'
 import {IBlogData} from "../../../interfaces/blog.interfaces";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../redux/store";
 
 interface Props {
     data : IBlogData
@@ -9,6 +11,12 @@ interface Props {
 }
 
 const DetailForm = ({ data,onClickDelete } : Props) => {
+    const user = useSelector((state: RootState) => state.auth.user);
+
+    const currentUidValidate = user?.uid ===data.uid;
+
+
+
     return(
         <Container>
             <Content>
@@ -21,10 +29,15 @@ const DetailForm = ({ data,onClickDelete } : Props) => {
                 <Image>
                     <img src={data.thumbnailUrl} alt=""/>
                 </Image>
-                <ButtonBox>
-                    <ButtonDelete onClick={onClickDelete}>삭제</ButtonDelete>
-                    <ButtonEdit to={`/edit/${data.id}`}>수정</ButtonEdit>
-                </ButtonBox>
+                {
+                    currentUidValidate
+                    && (
+                        <ButtonBox>
+                            <ButtonDelete onClick={onClickDelete}>삭제</ButtonDelete>
+                            <ButtonEdit to={`/edit/${data.id}`}>수정</ButtonEdit>
+                        </ButtonBox>
+                    )
+                }
             </Content>
         </Container>
     )

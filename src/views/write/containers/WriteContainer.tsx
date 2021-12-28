@@ -4,12 +4,15 @@ import TextForm from "../../.shared/form/TextForm";
 import {Idata, setDocumentFB} from "../../../firebase/query";
 import {useHistory} from "react-router-dom";
 import PageTitle from "../../.shared/item/PageTitle";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../redux/store";
 
 const WriteContainer = () => {
     const history = useHistory();
+    const uid  = useSelector((state: RootState) => state.auth?.user?.uid);
 
-    const handleSubmit = async (data : Idata) => {
-        await setDocumentFB(data)
+    const handleSubmit = async (data : Idata ) => {
+        await setDocumentFB(data ,uid)
         history.push('/')
     }
 
