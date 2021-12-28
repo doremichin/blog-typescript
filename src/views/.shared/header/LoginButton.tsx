@@ -22,6 +22,7 @@ const LoginButton = () => {
 
 
 const NavItem = styled(Link)`
+  display: inline-block;
   margin: 0 10px;
   padding: 10px;
 `;

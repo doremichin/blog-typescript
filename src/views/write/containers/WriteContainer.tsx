@@ -1,18 +1,23 @@
 import React from 'react';
 import styled from 'styled-components'
 import TextForm from "../../.shared/form/TextForm";
-import {Idata, setDocumentFB} from "../../../firebase/query";
+import {IData, setDocumentFB} from "../../../firebase/query";
 import {useHistory} from "react-router-dom";
 import PageTitle from "../../.shared/item/PageTitle";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
 
+type auth ={
+    uid : string | undefined
+    email : string | undefined
+}
+
 const WriteContainer = () => {
     const history = useHistory();
-    const uid  = useSelector((state: RootState) => state.auth?.user?.uid);
+    const user  = useSelector((state: RootState) => state.auth?.user);
 
-    const handleSubmit = async (data : Idata ) => {
-        await setDocumentFB(data ,uid)
+    const handleSubmit = async (data : IData ) => {
+        await setDocumentFB(data ,user)
         history.push('/')
     }
 

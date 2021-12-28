@@ -30,6 +30,9 @@ const BlogItem = ({data, index} : Props) => {
                 <Story>
                     {data.story}
                 </Story>
+                <Author>
+                    By {data.email}
+                </Author>
             </Desc>
         </Container>
     )
@@ -64,5 +67,11 @@ const Story = styled.div`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  margin-bottom: 15px;
+`;
+const Author = styled.div`
+  text-align: right;
+  color: #999;
+  font-size: 12px;
 `;
 export default BlogItem;

@@ -1,8 +1,9 @@
-import { collection, getDocs, doc, setDoc, serverTimestamp, query ,orderBy,getDoc,deleteDoc,updateDoc, Timestamp } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc, query ,orderBy,getDoc,deleteDoc,updateDoc, Timestamp } from "firebase/firestore";
 import { IBlogData } from "../interfaces/blog.interfaces";
 import { db } from "./firebase";
+import {IUserData} from "../interfaces/user.interfaces";
 
-export interface Idata {
+export interface IData {
     title : string
     story : string
     createdAt? : any
@@ -25,15 +26,15 @@ export const getCollectionFB = async (collectionId : string) => {
     return result;
 }
 
-// new Date().toLocaleDateString(),
-export const setDocumentFB = async (data : Idata ,uid: string | undefined) => {
+export const setDocumentFB = async (data : IData ,user: IUserData | null) => {
     const newCityRef = doc(collection(db, "blog"));
 
     await setDoc(newCityRef, {
         ...data,
         createdAt : Timestamp.now(),
         updateAt : Timestamp.now(),
-        uid
+        uid : user?.uid,
+        email : user?.email
     });
 }
 
@@ -59,7 +60,7 @@ export const deleteDocumentFB = async (collectionId : string , documentId : stri
 
 }
 
-export const updateDocumentFB = async (collectionId : string , documentId : string ,data : Idata) => {
+export const updateDocumentFB = async (collectionId : string , documentId : string ,data : IData) => {
 
     const washingtonRef = doc(db, collectionId, documentId);
 

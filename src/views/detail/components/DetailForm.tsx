@@ -13,7 +13,7 @@ interface Props {
 const DetailForm = ({ data,onClickDelete } : Props) => {
     const user = useSelector((state: RootState) => state.auth.user);
 
-    const currentUidValidate = user?.uid ===data.uid;
+    const currentUidValidate = user?.uid === data.uid;
 
     return(
         <Container>

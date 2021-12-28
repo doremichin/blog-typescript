@@ -15,7 +15,7 @@ function PrivateRoute (props : Props) {
 
     const {user, authInitialized} = useSelector((state : RootState) => state.auth)
 
-    if(!authInitialized || !user) return <Redirect to={'/'}/>
+    if(!authInitialized || !user) return <Redirect to={'/login'}/>
 
     return(
         <Container>

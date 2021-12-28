@@ -29,14 +29,14 @@ function SignUpContainer () {
 };
 
 const Container = styled.div`
-  height: 100vh;
+  height: calc(100vh - 79px);
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 const FormWrapper = styled.div`
   width: 500px;
-  transform: translateY(-150px);
+  transform: translateY(-100px);
 `;
 
 export default SignUpContainer;

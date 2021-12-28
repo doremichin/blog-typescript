@@ -7,4 +7,5 @@ export interface IBlogData {
     uid? : string
     updatedAt? : any
     thumbnailUrl? : string
+    email? : string
 }
