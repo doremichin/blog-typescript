@@ -16,7 +16,7 @@ const MainList = ({data, children} : Props) => {
                 <Row>
                     {
                         data.map((item, index) => (
-                                <Col>
+                                <Col key={item.id || index}>
                                     {children(item, index)}
                                 </Col>
                             )
