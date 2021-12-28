@@ -14,20 +14,22 @@ const DetailContainer = () => {
     const dispatch = useDispatch();
     const detail = useSelector((state: RootState) => state.blog.detail)
 
-    const getDetailById = async () => {
-        const result = await getDocumentFB('blog',id)
-        dispatch(setDocument(result));
-    }
     const deleteDocument = async () => {
         await deleteDocumentFB('blog', id)
         history.push('/')
     }
+    
     useEffect(() => {
+        const getDetailById = async () => {
+            const result = await getDocumentFB('blog',id)
+            dispatch(setDocument(result));
+        }
+
         getDetailById();
         return () => {
             dispatch(setDocument({}));
         }
-    }, []);
+    }, [dispatch, id]);
 
     if(!detail) return null;
 

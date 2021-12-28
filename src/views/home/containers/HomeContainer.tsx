@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components'
 import {getCollectionFB} from "../../../firebase/query";
 import {useDispatch, useSelector} from "react-redux";
@@ -14,14 +14,16 @@ const HomeContainer = () => {
     const dispatch = useDispatch();
     const list = useSelector((state : RootState) => state.blog.list)
 
-    const getBlogs = async () => {
-       const result = await getCollectionFB('blog');
-        dispatch(setCollections(result))
-    }
+
 
     useEffect(  () => {
+        const getBlogs = async () => {
+            const result = await getCollectionFB('blog');
+            dispatch(setCollections(result))
+
+        }
         getBlogs();
-    }, []);
+    }, [dispatch]);
     return(
         <Container>
             <MainList data={list}>
