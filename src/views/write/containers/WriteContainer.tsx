@@ -7,11 +7,6 @@ import PageTitle from "../../.shared/item/PageTitle";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
 
-type auth ={
-    uid : string | undefined
-    email : string | undefined
-}
-
 const WriteContainer = () => {
     const history = useHistory();
     const user  = useSelector((state: RootState) => state.auth?.user);

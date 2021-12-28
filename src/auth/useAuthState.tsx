@@ -22,5 +22,5 @@ export const useAuthState = () => {
             }
         });
         dispatch(checkedAuth())
-    }, []);
+    }, [dispatch]);
 }

@@ -16,7 +16,7 @@ type Props = {
 
 const SignUpForm = ( { onSubmit } : Props ) => {
 
-    const { register, setValue, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
     return(
         <Container>
@@ -76,16 +76,5 @@ const Button = styled.button`
   cursor: pointer;
   margin-bottom: 15px;
 `;
-const SignUpButton = styled(Link)`
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #111;
-  font-size: 14px;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+
 export default SignUpForm;

@@ -16,7 +16,7 @@ type Props = {
 
 const LoginForm = ( { onSubmit } : Props ) => {
 
-    const { register, setValue, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
     return(
         <Container>
