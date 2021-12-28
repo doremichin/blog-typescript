@@ -18,7 +18,7 @@ const DetailContainer = () => {
         await deleteDocumentFB('blog', id)
         history.push('/')
     }
-    
+
     useEffect(() => {
         const getDetailById = async () => {
             const result = await getDocumentFB('blog',id)
