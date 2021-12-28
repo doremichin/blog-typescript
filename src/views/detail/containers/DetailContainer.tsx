@@ -24,6 +24,9 @@ const DetailContainer = () => {
     }
     useEffect(() => {
         getDetailById();
+        return () => {
+            dispatch(setDocument({}));
+        }
     }, []);
 
     if(!detail) return null;

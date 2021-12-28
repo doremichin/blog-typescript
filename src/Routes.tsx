@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp";
 import PrivateRoute from './PrivateRoute';
 
 const Routes = () => {
+
     return(
         <Container>
             <Switch>

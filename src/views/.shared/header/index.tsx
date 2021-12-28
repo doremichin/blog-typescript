@@ -32,6 +32,7 @@ const Nav = styled.div`
   
 `;
 const NavItem = styled(Link)`
+  display: inline-block;
   padding: 10px;
   margin: 0 10px;
 `;

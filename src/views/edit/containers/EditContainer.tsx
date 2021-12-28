@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
 import {useHistory, useParams} from "react-router-dom";
 import PageTitle from "../../.shared/item/PageTitle";
-import {Idata, updateDocumentFB} from "../../../firebase/query";
+import {IData, updateDocumentFB} from "../../../firebase/query";
 
 const EditContainer = () => {
     const history = useHistory();
@@ -14,7 +14,7 @@ const EditContainer = () => {
     if(Object.keys(detail).length < 1) {
         history.push('/')
     }
-    const handleSubmit = async (data : Idata) => {
+    const handleSubmit = async (data : IData) => {
        await updateDocumentFB('blog', id, data )
         history.push('/')
     }
