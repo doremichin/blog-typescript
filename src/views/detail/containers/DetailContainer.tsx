@@ -24,11 +24,7 @@ const DetailContainer = () => {
             const result = await getDocumentFB('blog',id)
             dispatch(setDocument(result));
         }
-
         getDetailById();
-        return () => {
-            dispatch(setDocument({}));
-        }
     }, [dispatch, id]);
 
     if(!detail) return null;
