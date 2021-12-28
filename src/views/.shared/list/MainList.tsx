@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import styled from 'styled-components'
-import {blogData} from "../../../interfaces/blog.interfaces";
+import {IBlogData} from "../../../interfaces/blog.interfaces";
 import {ContentContainer} from "../layout/Layout.Styled";
 
 interface Props {
-    data : blogData[],
+    data : IBlogData[],
     children : any
 }
 

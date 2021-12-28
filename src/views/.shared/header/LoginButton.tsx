@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
-import { EmailLogout } from "../../../firebase/login";
+import { EmailLogout } from "../../../firebase/sign";
 import { setUserInfo } from '../../../redux/auth/slice';
 
 const LoginButton = () => {

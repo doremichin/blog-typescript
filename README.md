@@ -1,5 +1,5 @@
-##Blog / typesciprt로 제작하기
-
+Blog / typesciprt로 제작하기
+===========================
 React
 
 Redux-Toolkit
@@ -16,7 +16,6 @@ Goal🎯
 
 --------------------------------------
 
-기본 타입
 
 ####타입스크립트는 다양한 기본 타입을 제공합니다.</br>
 - 기본 타입 : 
@@ -25,26 +24,27 @@ Boolean, Number, String, Object, Array, Tuple, Enum, Any, Void, Null, Undefined,
 ```typescript
 let str: string = 'hi';
 let num: number = 100;
-
-let arr: Array = [1, 2, 3];
-let arr2: number[] = [1, 2, 3];
-
+let arr: number[] = [1, 2, 3];
+// let arr2 : Array<number> = [1,2,3]; 이 방식은 jsx 또는 tsx애서 충돌 날 수 있음
+let arr3: (number | string)[] = [1, 2, 3, '4', '5'];
+let arrNUm: number[] = [1, 2, 3];
 let obj: object = {};
+//타입으로 object를 넣는다는 것은 원시타입은 받지 않겠다는 것을 의미.
 let obj2: { name: string, age: number} = {
- name: 'hoho',
- age: 22
+ name: 'myeoni',
+ age: 20
 };
 ```
 
 - 함수에 타입 설정
 
 ```typescript
-function add(a: number, b: number): number {
+function addNum(a: number, b: number): number {
 return a+b;
 }//인자 뒤에 ):number 는 리턴 값에 대한 타입
 
-//옵셔널 파라미터
-function log(a: string, b?: string, c?: string) {
+//옵셔널 처리
+function log(a?: string, b?: number, c?: string) {
  console.log(a);
 }
 ```
@@ -66,9 +66,34 @@ enum Shoes {
 }
 //아직은 약간 모호한 개념..
 ```
-- Any: 모든 데이터 타입을 허용합니다.<br/><br/>
-- Void: 변수에는 undefined와 null만 할당하고 함수에는 리턴 값을 설정할 수 없는 타입입니다.<br/><br/>
+- Any: 모든 데이터 타입을 허용합니다.
+  <br/><br/>
+- Void: 변수에는 undefined와 null만 할당하고 함수에는 리턴 값을 설정할 수 없는 타입입니다.
+<br/><br/>
 - Never: 특정 값이 절대 발생할 수 없을 때 사용합니다.<br/><br/>
 
+####인터페이스<br/>
 
-https://www.samsungsds.com/kr/insights/TypeScript.html 참고!
+```typescript
+interface User {
+    name : string;
+    age : number;
+}
+//변수에 활용
+const person : User = {
+    naem : 'gwang',
+    age : 21
+}
+//함수에 활용
+function getUser(user : User) {
+    console.log(user)
+}
+
+//인덱싱
+interface StringArray {
+    [index:number] : string;
+}
+
+let array : StringArray = ['a','b','c']
+```
+

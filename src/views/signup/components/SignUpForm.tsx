@@ -14,7 +14,7 @@ type Props = {
 }
 
 
-const LoginForm = ( { onSubmit } : Props ) => {
+const SignUpForm = ( { onSubmit } : Props ) => {
 
     const { register, setValue, handleSubmit, formState: { errors } } = useForm<FormData>();
 
@@ -44,8 +44,7 @@ const LoginForm = ( { onSubmit } : Props ) => {
                     <FormMessage type={errors.password?.type}/>
                 </FormItem>
 
-                <Button type={'submit'}>로그인</Button>
-                <SignUpButton to={'/signup'}>회원가입</SignUpButton>
+                <Button type={'submit'}>회원가입</Button>
             </Form>
         </Container>
     )
@@ -89,4 +88,4 @@ const SignUpButton = styled(Link)`
   justify-content: center;
   align-items: center;
 `;
-export default LoginForm;
+export default SignUpForm;
