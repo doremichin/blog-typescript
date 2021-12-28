@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import {useForm} from "react-hook-form";
 import {Validate} from "../../../validate";
 import FormMessage from "../../.shared/message/FormMessage";
-import {Link} from "react-router-dom";
 
 type FormData = {
     id: string;
