@@ -1,4 +1,4 @@
-import { collection, getDocs, doc, setDoc, serverTimestamp, query ,orderBy,getDoc,deleteDoc,updateDoc } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc, serverTimestamp, query ,orderBy,getDoc,deleteDoc,updateDoc, Timestamp } from "firebase/firestore";
 import { IBlogData } from "../interfaces/blog.interfaces";
 import { db } from "./firebase";
 
@@ -17,7 +17,7 @@ export const getCollectionFB = async (collectionId : string) => {
     querySnapshot.forEach((doc) => {
         const docItem : IBlogData = {
             id: doc.id,
-            ...doc.data()
+            ...doc.data(),
         }
         result.push(docItem)
     });
@@ -25,14 +25,15 @@ export const getCollectionFB = async (collectionId : string) => {
     return result;
 }
 
-
-export const setDocumentFB = async (data : Idata) => {
+// new Date().toLocaleDateString(),
+export const setDocumentFB = async (data : Idata ,uid: string | undefined) => {
     const newCityRef = doc(collection(db, "blog"));
 
     await setDoc(newCityRef, {
         ...data,
-        createdAt : serverTimestamp(),
-        updateAt : serverTimestamp()
+        createdAt : Timestamp.now(),
+        updateAt : Timestamp.now(),
+        uid
     });
 }
 
@@ -64,6 +65,6 @@ export const updateDocumentFB = async (collectionId : string , documentId : stri
 
     await updateDoc(washingtonRef, {
         ...data,
-        updateAt : serverTimestamp()
+        updateAt : Timestamp.now(),
     });
 }
