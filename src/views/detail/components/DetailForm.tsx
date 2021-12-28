@@ -15,6 +15,8 @@ const DetailForm = ({ data,onClickDelete } : Props) => {
 
     const currentUidValidate = user?.uid === data.uid;
 
+    if(!data.id) return null;
+
     return(
         <Container>
             <Content>
@@ -27,7 +29,6 @@ const DetailForm = ({ data,onClickDelete } : Props) => {
                 <Story>
                     {data.story}
                 </Story>
-
                 {
                     currentUidValidate
                     && (
