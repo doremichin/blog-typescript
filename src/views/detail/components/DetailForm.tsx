@@ -15,20 +15,19 @@ const DetailForm = ({ data,onClickDelete } : Props) => {
 
     const currentUidValidate = user?.uid ===data.uid;
 
-
-
     return(
         <Container>
             <Content>
                 <Title>
                     {data.title}
                 </Title>
-                <Story>
-                    {data.story}
-                </Story>
                 <Image>
                     <img src={data.thumbnailUrl} alt=""/>
                 </Image>
+                <Story>
+                    {data.story}
+                </Story>
+
                 {
                     currentUidValidate
                     && (
@@ -54,10 +53,11 @@ const Title = styled.h2`
   margin-bottom: 20px;
 `;
 const Story = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 `;
 const Image = styled.div`
-  
+  max-width: 500px;
+  margin-bottom: 20px;
 `;
 const ButtonBox = styled.div`
   display: flex;

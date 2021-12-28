@@ -26,6 +26,9 @@ const TextForm = ({ onSubmit, data, submitType } : Props) => {
         const url : string = await uploadToStorage(file)
         setValue('thumbnailUrl', url)
     }
+    const deleteImage = () : void => {
+        setValue('thumbnailUrl', '')
+    }
 
     return(
         <Container>
@@ -49,7 +52,7 @@ const TextForm = ({ onSubmit, data, submitType } : Props) => {
                         />
                     </Label>
                 </FormItem>
-                <ImageUploader onChange={onChangeImage}/>
+                <ImageUploader onChange={onChangeImage} deleteImage={deleteImage}/>
                 <ButtonSubmit>
                     {submitType}
                 </ButtonSubmit>
@@ -95,5 +98,6 @@ const ButtonSubmit = styled.button`
   border-radius: 3px;
   border: none;
   padding: 10px 20px;
+  cursor: pointer;
 `;
 export default TextForm;
