@@ -6,6 +6,7 @@ import ImageUploader from "../ImageUploader";
 import {uploadToStorage} from "../../../firebase/storage";
 import {useDispatch} from "react-redux";
 import {checkLoading} from "../../../redux/blog/slice";
+import FormMessage from "../message/FormMessage";
 
 type FormData = {
     title: string;
@@ -42,8 +43,11 @@ const TextForm = ({ onSubmit, data, submitType ,defaultThumb} : Props) => {
                         <Input
                             type={'text'}
                             defaultValue={data?.title}
-                            {...register("title")}
+                            {...register("title", {
+                                required : true,
+                            })}
                         />
+                        <FormMessage type={errors.title?.type}/>
                     </Label>
                 </FormItem>
                 <FormItem>
@@ -51,8 +55,11 @@ const TextForm = ({ onSubmit, data, submitType ,defaultThumb} : Props) => {
                         <LabelName>내용</LabelName>
                         <Textarea
                             defaultValue={data?.story}
-                            {...register("story")}
+                            {...register("story",{
+                                required : true,
+                            })}
                         />
+                        <FormMessage type={errors.story?.type}/>
                     </Label>
                 </FormItem>
                 <ImageUploader onChange={onChangeImage} deleteImage={deleteImage} defaultThumb={defaultThumb}/>
@@ -75,24 +82,29 @@ const FormItem = styled.div`
   
 `;
 const Label = styled.label`
-  
+  display: block;
+  margin-bottom: 20px;
+
 `;
 const LabelName = styled.div`
   font-size: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 `;
 const Input = styled.input`
+  font-size: 16px;
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 4px;
+  outline: none;
 `;
 const Textarea = styled.textarea`
-  font-size: 16px;
+  font-size: 15px;
   width: 100%;
   padding: 10px;
   min-height: 300px;
   resize: vertical;
-  margin-bottom: 15px;
+  margin-bottom: 4px;
+  outline: none;
 `;
 const ButtonSubmit = styled.button`
   font-size: 14px;
