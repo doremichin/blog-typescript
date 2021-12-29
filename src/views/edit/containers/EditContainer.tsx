@@ -21,7 +21,7 @@ const EditContainer = () => {
     return(
         <Container>
             <PageTitle title={'수정 페이지'}/>
-            <TextForm onSubmit={handleSubmit} data={detail} submitType={'수정 완료'}/>
+            <TextForm onSubmit={handleSubmit} data={detail} submitType={'수정 완료'} defaultThumb={detail.thumbnailUrl}/>
         </Container>
     )
 };

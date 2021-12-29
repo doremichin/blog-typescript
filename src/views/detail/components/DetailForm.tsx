@@ -44,7 +44,7 @@ const DetailForm = ({ data,onClickDelete } : Props) => {
 };
 
 const Container = styled.div`
-  padding-top: 50px;
+  padding: 50px 0;
 `;
 const Content = styled.div`
   max-width: 500px;

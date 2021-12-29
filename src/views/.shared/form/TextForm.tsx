@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components'
-import {set, useForm} from 'react-hook-form';
+import { useForm} from 'react-hook-form';
 import {IBlogData} from "../../../interfaces/blog.interfaces";
 import ImageUploader from "../ImageUploader";
 import {uploadToStorage} from "../../../firebase/storage";
-
-
+import {useDispatch} from "react-redux";
+import {checkLoading} from "../../../redux/blog/slice";
 
 type FormData = {
     title: string;
@@ -16,13 +16,16 @@ type Props = {
     data? : IBlogData
     submitType : string
     onSubmit : any
+    defaultThumb? : string
 }
 
 
-const TextForm = ({ onSubmit, data, submitType } : Props) => {
-    const { register, setValue, handleSubmit, formState: { errors },watch } = useForm<FormData>();
+const TextForm = ({ onSubmit, data, submitType ,defaultThumb} : Props) => {
+    const { register, setValue, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const dispatch = useDispatch()
 
     const onChangeImage = async (file : any) => {
+        dispatch(checkLoading())
         const url : string = await uploadToStorage(file)
         setValue('thumbnailUrl', url)
     }
@@ -52,7 +55,7 @@ const TextForm = ({ onSubmit, data, submitType } : Props) => {
                         />
                     </Label>
                 </FormItem>
-                <ImageUploader onChange={onChangeImage} deleteImage={deleteImage}/>
+                <ImageUploader onChange={onChangeImage} deleteImage={deleteImage} defaultThumb={defaultThumb}/>
                 <ButtonSubmit>
                     {submitType}
                 </ButtonSubmit>
