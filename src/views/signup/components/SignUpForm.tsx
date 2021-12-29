@@ -37,7 +37,7 @@ const SignUpForm = ( { onSubmit } : Props ) => {
                         placeholder={'비밀번호를 입력해주세요.'}
                         {...register("password",{
                             required:true ,
-                            validate : { isMinLength: value => Validate.isMinLength(value,7)}
+                            validate : { isMinLength: value => Validate.isMinLength(value,5)}
                         })}
                     />
                     <FormMessage type={errors.password?.type}/>

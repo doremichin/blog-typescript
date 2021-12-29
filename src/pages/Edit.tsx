@@ -13,7 +13,6 @@ const Edit = () => {
 };
 
 const Container = styled.div`
-  padding-top: 50px;
 
 `;
 
