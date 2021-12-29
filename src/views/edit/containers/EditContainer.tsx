@@ -27,7 +27,7 @@ const EditContainer = () => {
 };
 
 const Container = styled.div`
-
+  padding: 50px 0;
 `;
 
 export default EditContainer;

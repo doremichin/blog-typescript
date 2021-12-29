@@ -25,7 +25,7 @@ const WriteContainer = () => {
 };
 
 const Container = styled.div`
-  padding-top: 50px;
+    padding: 50px 0;
 `;
 
 export default WriteContainer;

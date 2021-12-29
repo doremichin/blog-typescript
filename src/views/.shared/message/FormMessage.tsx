@@ -10,7 +10,7 @@ const FormMessage = ({type} : any) => {
 
     const messageComponents : any = {
         isValidEmail : <Message>올바른 이메일을 입력 해주세요.</Message>,
-        isMinLength : <Message>최소 8글자 이상 넣어 주세요.</Message>,
+        isMinLength : <Message>최소 6글자 이상 넣어 주세요.</Message>,
         required : <Message>필수 입력 사항입니다.</Message>,
     }
 
