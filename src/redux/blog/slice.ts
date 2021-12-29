@@ -2,13 +2,15 @@ import {createSlice} from "@reduxjs/toolkit";
 import {IBlogData} from "../../interfaces/blog.interfaces";
 
 export interface blogState {
-    list: IBlogData[];
-    detail : IBlogData | object
+    list: IBlogData[]
+    detail : IBlogData
+    uploadingImage : boolean
 }
 
 const initialState: blogState = {
     list: [],
-    detail : {}
+    detail : {},
+    uploadingImage : false
 }
 
 const blogSlice = createSlice({
@@ -20,11 +22,14 @@ const blogSlice = createSlice({
         },
         setDocument : (state, {payload}) => {
             state.detail = payload
+        },
+        checkLoading : (state) => {
+            state.uploadingImage = !state.uploadingImage
         }
     },
 })
 
-export const { setCollections, setDocument } = blogSlice.actions
+export const { setCollections, setDocument, checkLoading } = blogSlice.actions
 
 export default blogSlice.reducer
 
