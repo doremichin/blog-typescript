@@ -12,7 +12,6 @@ const MainList = ({data, children} : Props) => {
 
     return(
         <Container>
-            <ContentContainer>
                 <Row>
                     {
                         data.map((item, index) => (
@@ -23,7 +22,6 @@ const MainList = ({data, children} : Props) => {
                         )
                     }
                 </Row>
-            </ContentContainer>
         </Container>
     )
 };

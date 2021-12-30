@@ -1,4 +1,4 @@
-import { collection, getDocs, doc, setDoc, query ,orderBy,getDoc,deleteDoc,updateDoc, Timestamp } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc, query ,orderBy,getDoc,deleteDoc,updateDoc, Timestamp,where } from "firebase/firestore";
 import { IBlogData } from "../interfaces/blog.interfaces";
 import { db } from "./firebase";
 import {IUserData} from "../interfaces/user.interfaces";
@@ -13,6 +13,21 @@ export interface IData {
 
 export const getCollectionFB = async (collectionId : string) => {
     const q = query(collection(db, collectionId),orderBy('createdAt' , 'desc'));
+    const querySnapshot = await getDocs(q);
+    const result : any[] = [];
+    querySnapshot.forEach((doc) => {
+        const docItem : IBlogData = {
+            id: doc.id,
+            ...doc.data(),
+        }
+        result.push(docItem)
+    });
+    console.log(result)
+    return result;
+}
+
+export const getCollectionByUidFB = async (collectionId : string, uid : string) => {
+    const q = query(collection(db, collectionId),orderBy('createdAt' , 'desc'),where('uid','==',uid));
     const querySnapshot = await getDocs(q);
     const result : any[] = [];
     querySnapshot.forEach((doc) => {

@@ -18,6 +18,7 @@ export const EmailLogIn  = async (email : string, password : string )  => {
         return true
     }catch(err){
         console.log('login error' , err)
+        alert('아이디 또는 비밀번호가 틀렸습니다.')
         return false
     }
 }
