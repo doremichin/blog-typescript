@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import {Link} from "react-router-dom";
-import LoginButton from "./LoginButton";
+import LoginSection from "./LoginSection";
 
 const Header = () => {
     return(
@@ -10,7 +10,7 @@ const Header = () => {
             <Nav>
                 <NavItem to={'/'}>Home</NavItem>
                 <NavItem to={'/write'}>Write</NavItem>
-                <LoginButton/>
+                <LoginSection/>
             </Nav>
         </Container>
     )

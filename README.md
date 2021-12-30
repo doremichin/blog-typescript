@@ -99,4 +99,13 @@ interface StringArray {
 
 let array : StringArray = ['a','b','c']
 ```
+####제네릭<br/>
 
+```typescript
+function accomplish(goal: T):T {
+ return goal;
+}
+
+accomplish<string>('success');
+accomplish<number>(1000);
+```
