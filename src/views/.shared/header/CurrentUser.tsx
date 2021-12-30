@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
 import CurrentUserMenu from "./CurrentUserMenu";
+import Contain from "../common/Contain";
 
 function CurrentUser () {
     const [isView, setView] = useState(false)
@@ -10,6 +11,9 @@ function CurrentUser () {
 
     const handleClick = () => {
         setView(!isView)
+    }
+    const onClickOut = () => {
+        setView(false)
     }
 
     return(
@@ -20,7 +24,7 @@ function CurrentUser () {
             </Wrapper>
             {
                 isView
-                && <CurrentUserMenu/>
+                && <Contain onClickOut={onClickOut}><CurrentUserMenu/></Contain>
             }
         </Container>
     )

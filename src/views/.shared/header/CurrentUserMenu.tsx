@@ -11,16 +11,17 @@ function CurrentUserMenu () {
         EmailLogout();
         dispatch(setUserInfo(null))
     }
+
     return(
         <Container>
-            <List>
-                <ListItem onClick={handleLogout}>Logout</ListItem>
-                <ListItem onClick={handleLogout}>Logout</ListItem>
-                <ListItem onClick={handleLogout}>Logout</ListItem>
-            </List>
+                <List>
+                    <ListItem onClick={handleLogout}>Logout</ListItem>
+                    <ListItem onClick={handleLogout}>Logout</ListItem>
+                    <ListItem onClick={handleLogout}>Logout</ListItem>
+                </List>
         </Container>
     )
-};
+}
 
 const Container = styled.div`
   position: absolute;
