@@ -44,8 +44,9 @@ const Wrapper = styled.div`
 `;
 const Circle = styled.div`
   margin-left: 5px;
-  width: 15px;
-  height: 15px;
+  transform: translateY(-1px);
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background-color: #32d947;
 `;
