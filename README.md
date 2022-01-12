@@ -84,7 +84,7 @@ interface User {
     [index : string] : any; //인덱싱
 }
 //변수에 활용
-const person : User = {
+const user : User = {
     name : 'gwang',
     age : 21,
     father : { name : 'young' , age : 33}
@@ -100,7 +100,87 @@ interface StringArray {
 }
 
 let array : StringArray = ['a','b','c']
+
+interface Person {
+    name : string;
+    readonly gender : string;
+}
+
+const person : Person = {
+    name : 'gwang',
+    gender : 'male'
+}
+// person.gender = 'female'; // gender는 readonly이기 때문에 값을 변경할 수 없다.
 ```
+###타입과 인터페이스 차이<br/>
+```typescript
+//함수 표현
+type EatType = (food : string) => void;
+
+interface IEat {
+  (food : string) : void;
+}
+//배열 표현
+type PersonList = string[];
+
+interface IPersonList {
+    [index : number] : string;
+}
+```
+####intersection
+```typescript
+interface ErrorHandling {
+    success : boolean;
+    error? : {message : string};
+}
+interface ArtistsData {
+    artists : {name : string}[];
+}
+type ArtistsResponseType = ArtistsData & ErrorHandling;
+interface IArtistResponse extends ArtistsData, ErrorHandling {}
+
+let art : ArtistsResponseType;
+let iar : IArtistResponse;
+```
+####union types
+```typescript
+interface Bird {
+    fly() : void;
+    layEggs() : void;
+}
+interface Fish {
+    swim() : void;
+    layEggs() : void;
+}
+type PetType = Bird | Fish;
+//유니온 타입은 인터페이스로 구현이 어려움
+// interface IPet extends PetType {} - error
+// class Pet implements PetType {} - error
+```
+####Declaration Merging - interface
+```typescript
+interface MergingInterface {
+    a : string ;
+}
+interface MergingInterface {
+    b : string ;
+}
+let mi : MergingInterface;
+// mi.a, mi.b
+//type같은 경우는 merging이 되지 않음
+```
+
+
+
+
+
+
+
+
+
+
+
+
 ####제네릭<br/>
 
 ```typescript
