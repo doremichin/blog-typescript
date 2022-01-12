@@ -81,11 +81,13 @@ enum Shoes {
 interface User {
     name : string;
     age : number;
+    [index : string] : any; //인덱싱
 }
 //변수에 활용
 const person : User = {
-    naem : 'gwang',
-    age : 21
+    name : 'gwang',
+    age : 21,
+    father : { name : 'young' , age : 33}
 }
 //함수에 활용
 function getUser(user : User) {
