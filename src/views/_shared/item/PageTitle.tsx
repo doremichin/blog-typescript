@@ -1,17 +1,17 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 type Props = {
     title : string
 }
 
-const PageTitle = ({title, } : Props) => {
-    return(
-        <Container>
-            {title}
-        </Container>
-    )
-};
+function PageTitle({ title } : Props) {
+  return (
+    <Container>
+      {title}
+    </Container>
+  );
+}
 
 const Container = styled.h2`
     max-width: 500px;

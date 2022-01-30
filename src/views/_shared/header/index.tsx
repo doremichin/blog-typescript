@@ -1,20 +1,21 @@
 import React from 'react';
-import styled from 'styled-components'
-import {Link} from "react-router-dom";
-import LoginSection from "./LoginSection";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const Header = () => {
-    return(
-        <Container>
-            <Logo to={'/'}>Blog</Logo>
-            <Nav>
-                <NavItem to={'/'}>Home</NavItem>
-                <NavItem to={'/write'}>Write</NavItem>
-                <LoginSection/>
-            </Nav>
-        </Container>
-    )
-};
+import LoginSection from './LoginSection';
+
+function Header() {
+  return (
+    <Container>
+      <Logo to="/">Blog</Logo>
+      <Nav>
+        <NavItem to="/">Home</NavItem>
+        <NavItem to="/write">Write</NavItem>
+        <LoginSection />
+      </Nav>
+    </Container>
+  );
+}
 
 const Container = styled.div`
   display: flex;

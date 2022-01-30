@@ -1,24 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BsPencil } from 'react-icons/bs';
-import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {RootState} from "../../../redux/store";
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
+import { RootState } from '../../../redux/store';
 
-function WriteButton () {
-    const {user, authInitialized} = useSelector((state: RootState) => state.auth);
+function WriteButton() {
+  const { user, authInitialized } = useSelector((state: RootState) => state.auth);
 
-    if(!authInitialized || !user) return null;
+  if (!authInitialized || !user) return null;
 
-    return(
-        <Container>
-            <ToWrite to={'/write'}>
-                <BsPencil />
-            </ToWrite>
-        </Container>
-    )
-};
+  return (
+    <Container>
+      <ToWrite to="/write">
+        <BsPencil />
+      </ToWrite>
+    </Container>
+  );
+}
 
 const Container = styled.div`
 

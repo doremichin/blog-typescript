@@ -1,22 +1,23 @@
 import React from 'react';
-import styled from 'styled-components'
-import Routes from "./Routes";
-import Header from "./views/.shared/header";
-import {GlobalStyled} from "./styled/GlobalStyled";
-import {useAuthState} from "./auth/useAuthState";
-import WriteButton from "./views/write/components/WriteButton";
+import styled from 'styled-components';
 
-const App = () => {
-    useAuthState();
-    return(
-        <Container>
-            <GlobalStyled/>
-            <Header/>
-            <Routes/>
-            <WriteButton/>
-        </Container>
-    )
-};
+import Routes from './Routes';
+import Header from './views/_shared/header';
+import { GlobalStyled } from './styled/GlobalStyled';
+import { useAuthState } from './auth/useAuthState';
+import WriteButton from './views/write/components/WriteButton';
+
+function App() {
+  useAuthState();
+  return (
+    <Container>
+      <GlobalStyled />
+      <Header />
+      <Routes />
+      <WriteButton />
+    </Container>
+  );
+}
 
 const Container = styled.div`
 

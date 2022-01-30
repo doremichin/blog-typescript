@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useSelector} from "react-redux";
-import {RootState} from "./redux/store";
-import {Redirect, Route} from "react-router-dom";
+import { useSelector } from 'react-redux';
+
+import { Redirect, Route } from 'react-router-dom';
+
+import { RootState } from './redux/store';
 
 type Props = {
     exact: boolean
@@ -10,19 +12,17 @@ type Props = {
     component: () => JSX.Element
 }
 
+function PrivateRoute(props : Props) {
+  const { user, authInitialized } = useSelector((state : RootState) => state.auth);
 
-function PrivateRoute (props : Props) {
+  if (!authInitialized || !user) return <Redirect to="/login" />;
 
-    const {user, authInitialized} = useSelector((state : RootState) => state.auth)
-
-    if(!authInitialized || !user) return <Redirect to={'/login'}/>
-
-    return(
-        <Container>
-            <Route {...props}/>
-        </Container>
-    )
-};
+  return (
+    <Container>
+      <Route {...props} />
+    </Container>
+  );
+}
 
 const Container = styled.div`
 

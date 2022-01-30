@@ -1,26 +1,27 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { EmailLogout } from "../../../firebase/sign";
+
+import { EmailLogout } from '../../../firebase/sign';
 import { setUserInfo } from '../../../redux/auth/slice';
 
-function CurrentUserMenu () {
-    const dispatch = useDispatch();
+function CurrentUserMenu() {
+  const dispatch = useDispatch();
 
-    const handleLogout = () => {
-        EmailLogout();
-        dispatch(setUserInfo(null))
-    }
+  const handleLogout = () => {
+    EmailLogout();
+    dispatch(setUserInfo(null));
+  };
 
-    return(
-        <Container>
-                <List>
-                    <ListItem onClick={handleLogout}>Logout</ListItem>
-                    <ListItem onClick={handleLogout}>Logout</ListItem>
-                    <ListItem onClick={handleLogout}>Logout</ListItem>
-                </List>
-        </Container>
-    )
+  return (
+    <Container>
+      <List>
+        <ListItem onClick={handleLogout}>Logout</ListItem>
+        <ListItem onClick={handleLogout}>Logout</ListItem>
+        <ListItem onClick={handleLogout}>Logout</ListItem>
+      </List>
+    </Container>
+  );
 }
 
 const Container = styled.div`

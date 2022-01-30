@@ -1,32 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
-import PageTitle from "../../.shared/item/PageTitle";
-import SignUpForm from "../components/SignUpForm";
-import {SignUpByEmail} from "../../../firebase/sign";
-import {useHistory} from "react-router-dom";
+
+import { useHistory } from 'react-router-dom';
+
+import PageTitle from '../../_shared/item/PageTitle';
+import SignUpForm from '../components/SignUpForm';
+import { SignUpByEmail } from '../../../firebase/sign';
 
 type LoginInfo = {
     id : string,
     password : string
 }
 
-function SignUpContainer () {
-    const history = useHistory();
+function SignUpContainer() {
+  const history = useHistory();
 
-    const onSubmitSignUp = async({id, password} : LoginInfo) => {
-        const result = await SignUpByEmail(id,password)
-        if(result) history.push('/')
-    }
+  const onSubmitSignUp = async ({ id, password } : LoginInfo) => {
+    const result = await SignUpByEmail(id, password);
+    if (result) history.push('/');
+  };
 
-    return(
-        <Container>
-            <FormWrapper>
-                <PageTitle title={'회원가입'}/>
-                <SignUpForm onSubmit={onSubmitSignUp}/>
-            </FormWrapper>
-        </Container>
-    )
-};
+  return (
+    <Container>
+      <FormWrapper>
+        <PageTitle title="회원가입" />
+        <SignUpForm onSubmit={onSubmitSignUp} />
+      </FormWrapper>
+    </Container>
+  );
+}
 
 const Container = styled.div`
   height: calc(100vh - 79px);

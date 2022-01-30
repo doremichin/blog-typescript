@@ -1,47 +1,49 @@
 import React from 'react';
-import styled, { css } from 'styled-components'
-import {IBlogData} from "../../../interfaces/blog.interfaces";
-import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {RootState} from "../../../redux/store";
+import styled, { css } from 'styled-components';
+
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { IBlogData } from '../../../interfaces/blog.interfaces';
+import { RootState } from '../../../redux/store';
 
 interface Props {
     data : IBlogData
     onClickDelete : () => void
 }
 
-const DetailForm = ({ data,onClickDelete } : Props) => {
-    const user = useSelector((state: RootState) => state.auth.user);
+function DetailForm({ data, onClickDelete } : Props) {
+  const user = useSelector((state: RootState) => state.auth.user);
 
-    const currentUidValidate = user?.uid === data.uid;
+  const currentUidValidate = user?.uid === data.uid;
 
-    if(!data.id) return null;
+  if (!data.id) return null;
 
-    return(
-        <Container>
-            <Content>
-                <Title>
-                    {data.title}
-                </Title>
-                <Image>
-                    <img src={data.thumbnailUrl} alt=""/>
-                </Image>
-                <Story>
-                    {data.story}
-                </Story>
-                {
-                    currentUidValidate
+  return (
+    <Container>
+      <Content>
+        <Title>
+          {data.title}
+        </Title>
+        <Image>
+          <img src={data.thumbnailUrl} alt="" />
+        </Image>
+        <Story>
+          {data.story}
+        </Story>
+        {
+          currentUidValidate
                     && (
-                        <ButtonBox>
-                            <ButtonDelete onClick={onClickDelete}>삭제</ButtonDelete>
-                            <ButtonEdit to={`/edit/${data.id}`}>수정</ButtonEdit>
-                        </ButtonBox>
+                      <ButtonBox>
+                        <ButtonDelete onClick={onClickDelete}>삭제</ButtonDelete>
+                        <ButtonEdit to={`/edit/${data.id}`}>수정</ButtonEdit>
+                      </ButtonBox>
                     )
-                }
-            </Content>
-        </Container>
-    )
-};
+        }
+      </Content>
+    </Container>
+  );
+}
 
 const Container = styled.div`
   padding: 50px 0;
@@ -69,7 +71,7 @@ export const Button = css`
   padding: 10px 15px;
   border-radius: 3px;
   color: #fff;
-`
+`;
 const ButtonDelete = styled.div`
   ${Button};
   background-color: #ea3e3e;

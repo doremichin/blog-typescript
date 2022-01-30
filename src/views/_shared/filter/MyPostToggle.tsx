@@ -1,28 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import cn from 'classnames'
-
+import cn from 'classnames';
 
 interface Props {
     onChange : (value : boolean) => void
     hasUid : boolean | undefined
 }
 
-function MyPostToggle ({onChange,hasUid} : Props) {
+function MyPostToggle({ onChange, hasUid } : Props) {
+  const handleChange = (e : any) => {
+    onChange(e.target.checked);
+  };
 
-    const handleChange = (e : any) => {
-        onChange(e.target.checked)
-    }
-
-    return(
-        <Container className={cn({hasUid})}>
-            <Label>
-                내 포스팅만 보기
-                <Input type={"checkbox"} onChange={handleChange} disabled={hasUid}/>
-            </Label>
-        </Container>
-    )
-};
+  return (
+    <Container className={cn({ hasUid })}>
+      <Label>
+        내 포스팅만 보기
+        <Input type="checkbox" onChange={handleChange} disabled={hasUid} />
+      </Label>
+    </Container>
+  );
+}
 
 const Container = styled.div`
     

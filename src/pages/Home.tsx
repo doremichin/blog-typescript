@@ -1,14 +1,15 @@
 import React from 'react';
-import styled from 'styled-components'
-import HomeContainer from "../views/home/containers/HomeContainer";
+import styled from 'styled-components';
 
-const Home = () => {
-    return(
-        <Container>
-            <HomeContainer/>
-        </Container>
-    )
-};
+import HomeContainer from '../views/home/containers/HomeContainer';
+
+function Home() {
+  return (
+    <Container>
+      <HomeContainer />
+    </Container>
+  );
+}
 
 const Container = styled.div`
 
