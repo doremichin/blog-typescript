@@ -7,15 +7,17 @@ import MainList from "../../.shared/list/MainList";
 import BlogItem from "../../.shared/item/BlogItem";
 import {RootState} from "../../../redux/store";
 import { IBlogData} from "../../../interfaces/blog.interfaces";
-import MyPostToggle from "../../.shared/filter/MyPostToggle";
+import MyPostToggle, {MyPostToggleProps} from "../../.shared/filter/MyPostToggle";
 import { ContentContainer } from '../../.shared/layout/Layout.Styled';
 
 
 
 const HomeContainer = () => {
     const dispatch = useDispatch();
-    const list = useSelector((state : RootState) => state.blog.list)
-    const uid = useSelector((state : RootState) => state?.auth?.user?.uid)
+    const { list, uid } = useSelector((state : RootState) => ({
+        list : state.blog.list,
+        uid : state?.auth?.user?.uid
+    }))
 
     const getBlogByUid = async () => {
         if(!uid) return;
@@ -27,7 +29,7 @@ const HomeContainer = () => {
         dispatch(setCollections(result))
     },[dispatch]);
 
-    const onlyMyPost = (value : boolean) => {
+    const onChange : MyPostToggleProps['onChange']= (value) => {
         if(value) getBlogByUid();
         else getBlogs();
     }
@@ -36,11 +38,12 @@ const HomeContainer = () => {
         getBlogs();
     }, [getBlogs]);
 
+
     return(
         <Container>
             <ContentContainer>
                 <Filter>
-                    <MyPostToggle onChange={onlyMyPost} hasUid={!uid}/>
+                    <MyPostToggle onChange={onChange} hasUid={!uid}/>
                 </Filter>
                 <MainList data={list}>
                     {(data : IBlogData, index : number) => <BlogItem data={data} index={index}/>}

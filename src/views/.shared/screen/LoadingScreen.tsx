@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useSelector} from "react-redux";
-import {RootState} from "../../../redux/store";
 import cn from 'classnames'
 
+interface Props {
+    uploadingImage : boolean
+}
 
-function LoadingScreen () {
-    const uploadingImage = useSelector((state: RootState) => state.blog.uploadingImage)
+
+function LoadingScreen ({uploadingImage} : Props) {
 
     return(
         <Container className={cn({uploadingImage})}>

@@ -6,11 +6,16 @@ import {RootState} from "../../../redux/store";
 import {useHistory, useParams} from "react-router-dom";
 import PageTitle from "../../.shared/item/PageTitle";
 import {IData, updateDocumentFB} from "../../../firebase/query";
+import LoadingScreen from '../../.shared/screen/LoadingScreen';
 
 const EditContainer = () => {
     const history = useHistory();
     const {id} : any = useParams();
-    const detail = useSelector((state: RootState) => state.blog.detail)
+    const { detail, uploadingImage } = useSelector((state: RootState) => ({
+        detail : state.blog.detail,
+        uploadingImage : state.blog.uploadingImage
+    }))
+
     if(Object.keys(detail).length < 1) {
         history.push('/')
     }
@@ -22,6 +27,7 @@ const EditContainer = () => {
         <Container>
             <PageTitle title={'수정 페이지'}/>
             <TextForm onSubmit={handleSubmit} data={detail} submitType={'수정 완료'} defaultThumb={detail.thumbnailUrl}/>
+            <LoadingScreen uploadingImage={uploadingImage}/>
         </Container>
     )
 };

@@ -3,13 +3,14 @@ import styled from 'styled-components'
 import {useForm} from "react-hook-form";
 import {Validate} from "../../../validate";
 import FormMessage from "../../.shared/message/FormMessage";
+import {LoginInfo} from "../containers/SignUpContainer";
 
 type FormData = {
     id: string;
     password: string;
 };
-type Props = {
-    onSubmit : any
+interface Props {
+    onSubmit({id, password} : LoginInfo) : Promise<void>
 }
 
 

@@ -4,13 +4,14 @@ import {useForm} from "react-hook-form";
 import {Validate} from "../../../validate";
 import FormMessage from "../../.shared/message/FormMessage";
 import {Link} from "react-router-dom";
+import {LoginInfo} from "../containers/LoginContainer";
 
 type FormData = {
     id: string;
     password: string;
 };
-type Props = {
-    onSubmit : any
+interface Props  {
+    onSubmit({id, password} : LoginInfo) : Promise<void>
 }
 
 

@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import cn from 'classnames'
 
 
-interface Props {
+export interface MyPostToggleProps {
     onChange : (value : boolean) => void
     hasUid : boolean | undefined
 }
 
-function MyPostToggle ({onChange,hasUid} : Props) {
+function MyPostToggle ({onChange,hasUid} : MyPostToggleProps) {
 
     const handleChange = (e : any) => {
         onChange(e.target.checked)

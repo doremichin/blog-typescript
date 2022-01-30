@@ -5,12 +5,12 @@ import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
 
-interface Props {
+export interface DetailFormProps {
     data : IBlogData
-    onClickDelete : () => void
+    onClickDelete() : Promise<void>
 }
 
-const DetailForm = ({ data,onClickDelete } : Props) => {
+const DetailForm = ({ data,onClickDelete } : DetailFormProps) => {
     const user = useSelector((state: RootState) => state.auth.user);
 
     const currentUidValidate = user?.uid === data.uid;
