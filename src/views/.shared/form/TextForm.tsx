@@ -7,16 +7,17 @@ import {uploadToStorage} from "../../../firebase/storage";
 import {useDispatch} from "react-redux";
 import {checkLoading} from "../../../redux/blog/slice";
 import FormMessage from "../message/FormMessage";
+import {IData} from "../../../firebase/query";
 
 type FormData = {
     title: string;
     story: string;
     thumbnailUrl : string | void;
 };
-type Props = {
+interface Props {
     data? : IBlogData
     submitType : string
-    onSubmit : any
+    onSubmit(data : IData) : Promise<void>
     defaultThumb? : string
 }
 

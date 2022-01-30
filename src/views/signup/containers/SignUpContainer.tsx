@@ -4,14 +4,20 @@ import PageTitle from "../../.shared/item/PageTitle";
 import SignUpForm from "../components/SignUpForm";
 import {SignUpByEmail} from "../../../firebase/sign";
 import {useHistory} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../redux/store";
 
-type LoginInfo = {
+export interface LoginInfo {
     id : string,
     password : string
 }
 
 function SignUpContainer () {
+
+    const user = useSelector((state: RootState) => state.auth.user);
     const history = useHistory();
+
+    if(user) history.push('/');
 
     const onSubmitSignUp = async({id, password} : LoginInfo) => {
         const result = await SignUpByEmail(id,password)

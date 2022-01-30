@@ -2,19 +2,19 @@ import React, {useEffect} from 'react';
 import styled from 'styled-components'
 import {deleteDocumentFB, getDocumentFB} from "../../../firebase/query";
 import {useHistory, useParams} from "react-router-dom";
-import DetailForm from "../components/DetailForm";
+import DetailForm, { DetailFormProps } from "../components/DetailForm";
 import {useDispatch, useSelector} from "react-redux";
 import { setDocument } from '../../../redux/blog/slice';
 import {RootState} from "../../../redux/store";
 
 
 const DetailContainer = () => {
-    const { id } :{ id : string } = useParams();
+    const { id } : { id : string } = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
     const detail = useSelector((state: RootState) => state.blog.detail)
 
-    const deleteDocument = async () => {
+    const deleteDocument : DetailFormProps['onClickDelete'] = async () => {
         await deleteDocumentFB('blog', id)
         history.push('/')
     }
